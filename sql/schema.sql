@@ -127,40 +127,6 @@ CREATE TABLE IF NOT EXISTS user_source_preferences (
   INDEX idx_usp_order(visitor_hash, position)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE IF NOT EXISTS subscribers (
-  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  email VARCHAR(254) NOT NULL,
-  email_hash CHAR(64) NOT NULL UNIQUE,
-  language VARCHAR(10) NOT NULL DEFAULT 'en',
-  status ENUM('pending','active','unsubscribed') NOT NULL DEFAULT 'pending',
-  confirmation_token_hash CHAR(64) NULL,
-  confirmation_expires_at DATETIME NULL,
-  confirmation_last_sent_at DATETIME NULL,
-  confirmed_at DATETIME NULL,
-  unsubscribed_at DATETIME NULL,
-  unsubscribe_token_version INT UNSIGNED NOT NULL DEFAULT 1,
-  created_at DATETIME NOT NULL,
-  updated_at DATETIME NOT NULL,
-  INDEX idx_subscribers_status(status), INDEX idx_confirmation_expiry(confirmation_expires_at)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-CREATE TABLE IF NOT EXISTS digest_log (
-  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  subscriber_id BIGINT UNSIGNED NOT NULL,
-  scheduled_slot DATETIME NOT NULL,
-  status ENUM('claimed','sent','failed','skipped_empty') NOT NULL,
-  article_ids JSON NOT NULL,
-  attempts INT UNSIGNED NOT NULL DEFAULT 0,
-  error_code VARCHAR(64) NULL,
-  message_id VARCHAR(255) NULL,
-  sent_at DATETIME NULL,
-  created_at DATETIME NOT NULL,
-  updated_at DATETIME NOT NULL,
-  CONSTRAINT fk_digest_subscriber FOREIGN KEY(subscriber_id) REFERENCES subscribers(id) ON DELETE CASCADE,
-  UNIQUE KEY uq_digest_slot(subscriber_id, scheduled_slot),
-  INDEX idx_digest_status_slot(status, scheduled_slot)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 CREATE TABLE IF NOT EXISTS api_rate_limits (
   id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   route VARCHAR(100) NOT NULL,

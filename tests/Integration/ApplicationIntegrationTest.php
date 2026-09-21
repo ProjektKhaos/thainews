@@ -4,9 +4,6 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use ThaiNews\Config;
-use ThaiNews\Digest\DigestService;
-use ThaiNews\Digest\Mailer;
 use ThaiNews\Logger;
 use ThaiNews\News\ArticleCandidate;
 use ThaiNews\News\AdapterRegistry;
@@ -16,10 +13,6 @@ use ThaiNews\News\NewsRepository;
 use ThaiNews\News\SourceAdapterInterface;
 use ThaiNews\News\SourceDefinition;
 use ThaiNews\Preferences\PreferencesRepository;
-use ThaiNews\Security\RateLimiter;
-use ThaiNews\Security\Tokens;
-use ThaiNews\Subscription\SubscriberRepository;
-use ThaiNews\Subscription\SubscriptionService;
 use ThaiNews\Translation\TranslationProviderInterface;
 use ThaiNews\Translation\TranslationRepository;
 use ThaiNews\Translation\TranslationService;
@@ -104,67 +97,4 @@ final class ApplicationIntegrationTest extends TestCase
         self::assertSame('1',(string)$this->pdo->query("SELECT COUNT(*) FROM translation_memory WHERE target_language='sv' AND source_text='Changed headline'")->fetchColumn());
     }
 
-    public function testDigestDryRunDoesNotWriteOrSend(): void
-    {
-        $repo=new NewsRepository($this->pdo);$source=$repo->enabledSources('bangkok-post')[0];
-        $repo->upsertArticle($source,new ArticleCandidate('integration-digest','Digest title','https://example.com/integration-digest','',null,new DateTimeImmutable('2026-09-20T10:00:00Z')));
-        $this->pdo->exec("UPDATE articles SET first_seen_at='2026-09-20 10:00:00' WHERE external_id='integration-digest'");
-        $this->pdo->exec("INSERT INTO subscribers(email,email_hash,language,status,confirmed_at,unsubscribe_token_version,created_at,updated_at) VALUES('digest@example.com',SHA2('digest@example.com',256),'en','active','2026-09-20 09:00:00',1,'2026-09-20 09:00:00','2026-09-20 09:00:00')");
-        $config=new Config(['public_origin'=>'https://thainews.aberg.online','base_url'=>'','timezone'=>'Asia/Bangkok','app_secret'=>str_repeat('x',32),'smtp'=>['enabled'=>false],'digest'=>['max_per_source'=>10,'max_total'=>40]]);
-        $service=new DigestService($this->pdo,new SubscriberRepository($this->pdo),new Mailer($config),$config,new Logger(sys_get_temp_dir()));
-        $result=$service->run(new DateTimeImmutable('2026-09-20T18:00:00+07:00'),true,100);
-        self::assertSame(1,$result['would_send']);self::assertSame('0',(string)$this->pdo->query('SELECT COUNT(*) FROM digest_log')->fetchColumn());
-    }
-
-    public function testDigestHasBrandedHtmlPlainTextAndUnsubscribeLink(): void
-    {
-        $repo=new NewsRepository($this->pdo);$source=$repo->enabledSources('bangkok-post')[0];
-        $repo->upsertArticle($source,new ArticleCandidate('integration-digest-content','Digest content title','https://example.com/integration-digest-content','Digest excerpt',null,new DateTimeImmutable('2026-09-20T10:00:00Z')));
-        $this->pdo->exec("UPDATE articles SET first_seen_at='2026-09-20 10:00:00' WHERE external_id='integration-digest-content'");
-        $this->pdo->exec("INSERT INTO subscribers(email,email_hash,language,status,confirmed_at,unsubscribe_token_version,created_at,updated_at) VALUES('content@example.com',SHA2('content@example.com',256),'sv','active','2026-09-20 09:00:00',1,'2026-09-20 09:00:00','2026-09-20 09:00:00')");
-        $config=new Config(['public_origin'=>'https://thainews.aberg.online','base_url'=>'','timezone'=>'Asia/Bangkok','app_secret'=>str_repeat('x',32),'smtp'=>['enabled'=>false],'digest'=>['max_per_source'=>10,'max_total'=>40]]);
-        $mailer=new class($config) extends Mailer {
-            public string $html='';public string $text='';
-            public function sendDigest(string $to,string $subject,string $html,string $text):?string{$this->html=$html;$this->text=$text;return'test-message-id';}
-        };
-        $service=new DigestService($this->pdo,new SubscriberRepository($this->pdo),$mailer,$config,new Logger(sys_get_temp_dir()));
-        $result=$service->run(new DateTimeImmutable('2026-09-20T18:00:00+07:00'),false,100);
-        self::assertSame(1,$result['sent']);
-        self::assertStringContainsString('<html>',$mailer->html);
-        self::assertStringContainsString('img/thainews_logo1.png',$mailer->html);
-        self::assertStringContainsString('unsubscribe.php?',$mailer->html);
-        self::assertStringContainsString('https://example.com/integration-digest-content',$mailer->text);
-        self::assertStringContainsString('unsubscribe.php?',$mailer->text);
-        self::assertSame('sent',(string)$this->pdo->query('SELECT status FROM digest_log LIMIT 1')->fetchColumn());
-    }
-
-    public function testDoubleOptInDuplicateProtectionAndSignedUnsubscribe(): void
-    {
-        $config=new Config([
-            'public_origin'=>'https://thainews.aberg.online','base_url'=>'','timezone'=>'Asia/Bangkok',
-            'app_secret'=>str_repeat('x',32),'smtp'=>['enabled'=>false],
-        ]);
-        $mailer=new class($config) extends Mailer {
-            /** @var list<string> */ public array $links=[];
-            public function sendConfirmation(string $to,string $language,string $link):void{$this->links[]=$link;}
-        };
-        $repo=new SubscriberRepository($this->pdo);
-        $service=new SubscriptionService($repo,new RateLimiter($this->pdo,str_repeat('r',32)),$mailer,$config);
-        $service->request(' Opt-In@example.com ','sv','integration-client');
-        $service->request('opt-in@example.com','sv','integration-client');
-
-        self::assertCount(1,$mailer->links,'A pending address must not be mailed repeatedly inside the cooldown.');
-        parse_str((string)parse_url($mailer->links[0],PHP_URL_QUERY),$query);
-        $subscriber=$repo->findById((int)$query['sid']);
-        self::assertNotNull($subscriber);
-        self::assertSame('pending',$subscriber['status']);
-        self::assertTrue($repo->confirm((int)$query['sid'],hash('sha256',(string)$query['token'])));
-        self::assertSame('active',$repo->findById((int)$query['sid'])['status']);
-
-        $version=(int)$repo->findById((int)$query['sid'])['unsubscribe_token_version'];
-        $signature=Tokens::unsubscribeSignature((int)$query['sid'],$version,str_repeat('x',32));
-        self::assertTrue(Tokens::verifyUnsubscribe((int)$query['sid'],$version,$signature,str_repeat('x',32)));
-        self::assertTrue($repo->unsubscribe((int)$query['sid'],$version));
-        self::assertSame('unsubscribed',$repo->findById((int)$query['sid'])['status']);
-    }
 }

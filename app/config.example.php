@@ -10,19 +10,13 @@ return [
     'timezone' => 'Asia/Bangkok',
     'default_language' => 'en',
     'supported_languages' => ['en', 'th', 'sv'],
-    'asset_version' => '1.0.16',
+    'asset_version' => '1.0.17',
     'app_secret' => 'CHANGE_TO_AT_LEAST_32_RANDOM_BYTES',
     'rate_limit_secret' => 'CHANGE_TO_A_DIFFERENT_32_BYTE_SECRET',
     'db' => [
         'dsn' => 'mysql:host=127.0.0.1;dbname=thai_news;charset=utf8mb4',
         'user' => 'thai_news',
         'pass' => 'CHANGE_ME',
-    ],
-    'smtp' => [
-        'enabled' => false,
-        'dsn' => 'smtps://USERNAME:PASSWORD@smtp.example.com:465',
-        'from_email' => 'news@thainews.aberg.online',
-        'from_name' => 'Thai News',
     ],
     'fetch' => [
         'user_agent' => 'ThaiNewsAggregator/1.0 (+https://thainews.aberg.online/)',
@@ -37,12 +31,6 @@ return [
         'connect_timeout' => 5,
         'timeout' => 30,
         'batch_limit' => 50,
-    ],
-    'digest' => [
-        'times' => ['00:00', '06:00', '12:00', '18:00'],
-        'slot_window_minutes' => 30,
-        'max_per_source' => 10,
-        'max_total' => 40,
     ],
     // Omit storage to use <project_root>/storage. Override only with explicit absolute paths.
 ];

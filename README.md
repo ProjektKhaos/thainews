@@ -13,7 +13,6 @@ Live site: [thainews.aberg.online](https://thainews.aberg.online/)
 - Light and dark themes.
 - Text-focused article cards with compact headlines, excerpts, and localized read-more links.
 - Optional cached headline translation through Google Cloud Translation.
-- Optional double-opt-in email digests through Symfony Mailer.
 - Idempotent database schema and source seed scripts.
 - PHPUnit, Playwright, and axe accessibility tests.
 
@@ -59,7 +58,7 @@ sudo install -o root -g www-data -m 0640 \
 
 Set `THAI_NEWS_CONFIG_FILE=/etc/thainews/config.php` for PHP and all cron jobs. Generate independent random values of at least 32 bytes for `app_secret` and `rate_limit_secret`, and provide a least-privilege database account.
 
-SMTP and Google Translation are disabled in the example configuration. Enable either integration only after adding valid credentials to the external configuration file.
+Google Translation is disabled in the example configuration. Enable it only after adding valid credentials to the external configuration file.
 
 The supplied Apache virtual-host examples are in [`deploy/apache`](deploy/apache). Adjust domain names, paths, and certificate locations for your environment.
 
@@ -83,7 +82,7 @@ THAI_NEWS_CONFIG_FILE=/etc/thainews/config.php php cron/fetch_news.php --dry-run
 THAI_NEWS_CONFIG_FILE=/etc/thainews/config.php php cron/fetch_news.php
 ```
 
-The recommended production schedule fetches every ten minutes. Optional translation runs two minutes after each fetch window, and the digest scheduler runs every five minutes. A ready-to-adapt crontab is available in [`deploy/cron/thainews`](deploy/cron/thainews).
+The recommended production schedule fetches every ten minutes. Optional translation runs two minutes after each fetch window. A ready-to-adapt crontab is available in [`deploy/cron/thainews`](deploy/cron/thainews).
 
 ## Development and tests
 

@@ -80,7 +80,6 @@ button,input,select{font:inherit}
 .settings-panel select{width:100%;min-height:44px;border:1px solid var(--control-border);border-radius:8px;background:var(--card);color:var(--ink);padding:0 11px}
 button,.primary{min-height:42px;border:0;border-radius:8px;padding:0 14px;font-weight:800;cursor:pointer}
 .primary{background:var(--navy);color:var(--primary-text)}
-.hp{position:absolute;left:-9999px}
 .settings-panel{max-width:860px;margin-inline:auto}
 .settings-panel fieldset{border:1px solid var(--line);border-radius:10px;padding:14px;display:flex;gap:20px;flex-wrap:wrap}
 .source-sort{list-style:none;padding:0;margin:16px 0;display:grid;gap:8px}

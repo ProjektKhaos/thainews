@@ -33,7 +33,6 @@ $pdo->exec("ALTER USER '{$databaseUser}'@'127.0.0.1' IDENTIFIED BY {$quotedPassw
 $pdo->exec("GRANT SELECT,INSERT,UPDATE,DELETE ON `{$databaseName}`.* TO '{$databaseUser}'@'127.0.0.1'");
 $pdo->exec('FLUSH PRIVILEGES');
 
-$smtpDsn = trim((string) getenv('THAI_NEWS_SMTP_DSN'));
 $translationKey = trim((string) getenv('THAI_NEWS_TRANSLATION_API_KEY'));
 $config = [
     'env' => 'production',
@@ -42,19 +41,13 @@ $config = [
     'timezone' => 'Asia/Bangkok',
     'default_language' => 'en',
     'supported_languages' => ['en', 'th', 'sv'],
-    'asset_version' => '1.0.16',
+    'asset_version' => '1.0.17',
     'app_secret' => $appSecret,
     'rate_limit_secret' => $rateSecret,
     'db' => [
         'dsn' => "mysql:host=127.0.0.1;dbname={$databaseName};charset=utf8mb4",
         'user' => $databaseUser,
         'pass' => $databasePassword,
-    ],
-    'smtp' => [
-        'enabled' => $smtpDsn !== '',
-        'dsn' => $smtpDsn,
-        'from_email' => trim((string) getenv('THAI_NEWS_FROM_EMAIL')) ?: 'news@thainews.aberg.online',
-        'from_name' => 'Thai News',
     ],
     'fetch' => [
         'user_agent' => 'ThaiNewsAggregator/1.0 (+https://thainews.aberg.online/)',
@@ -69,12 +62,6 @@ $config = [
         'connect_timeout' => 5,
         'timeout' => 30,
         'batch_limit' => 50,
-    ],
-    'digest' => [
-        'times' => ['00:00', '06:00', '12:00', '18:00'],
-        'slot_window_minutes' => 30,
-        'max_per_source' => 10,
-        'max_total' => 40,
     ],
 ];
 
@@ -100,5 +87,4 @@ chown($configDir, 'root');
 chgrp($configDir, 'www-data');
 
 fwrite(STDOUT, "Created production database, runtime user and external config.\n");
-fwrite(STDOUT, $smtpDsn === '' ? "SMTP remains disabled until THAI_NEWS_SMTP_DSN is supplied.\n" : "SMTP configured.\n");
 fwrite(STDOUT, $translationKey === '' ? "Headline translation remains disabled until THAI_NEWS_TRANSLATION_API_KEY is supplied.\n" : "Headline translation configured.\n");

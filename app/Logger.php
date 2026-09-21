@@ -23,7 +23,7 @@ final class Logger
     /** @param array<string,mixed> $data */
     private function redact(array $data): array
     {
-        $blocked = ['password','pass','token','secret','authorization','email','smtp'];
+        $blocked = ['password','pass','token','secret','authorization'];
         foreach ($data as $key => $value) {
             if (in_array(strtolower((string)$key), $blocked, true)) $data[$key] = '[REDACTED]';
             elseif (is_array($value)) $data[$key] = $this->redact($value);

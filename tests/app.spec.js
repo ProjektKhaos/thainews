@@ -24,7 +24,6 @@ test('home/settings responsive basics', async ({ page }, testInfo) => {
     return [...switcher.parentElement.children].every(element => element.getBoundingClientRect().right <= right + 1);
   })).toBeTruthy();
   await expect(page.locator('header .theme-toggle')).toHaveCount(0);
-  await expect(page.locator('.subscribe-card')).toHaveCount(0);
   await expect(page.locator('.site-footer')).toHaveText('Thai News — Developed by Hans Åberg 2026 — Relayworks');
   await expect(page.locator('img[alt="Thai News"]')).toBeVisible();
   await expect(page.locator('.source-section h2', { hasText: 'Bangkok Post' })).toBeVisible();
