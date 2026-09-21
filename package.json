@@ -1,0 +1,17 @@
+{
+  "name": "thai-news",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "assets": "mkdir -p assets/js/vendor && cp node_modules/sortablejs/Sortable.min.js assets/js/vendor/sortable.min.js",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "sortablejs": "1.15.7"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.55.1",
+    "@axe-core/playwright": "4.11.1",
+    "playwright-core": "1.55.1"
+  }
+}

@@ -1,0 +1,7 @@
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+MAILTO=""
+
+*/10 * * * * www-data umask 007; cd /var/www/abergonline/thainews && THAI_NEWS_CONFIG_FILE=/etc/thainews/config.php /usr/bin/php cron/fetch_news.php >> storage/logs/cron-fetch.log 2>&1
+2,12,22,32,42,52 * * * * www-data umask 007; cd /var/www/abergonline/thainews && THAI_NEWS_CONFIG_FILE=/etc/thainews/config.php /usr/bin/php cron/translate_news.php >> storage/logs/cron-translate.log 2>&1
+*/5 * * * * www-data umask 007; cd /var/www/abergonline/thainews && THAI_NEWS_CONFIG_FILE=/etc/thainews/config.php /usr/bin/php cron/send_digest.php >> storage/logs/cron-digest.log 2>&1

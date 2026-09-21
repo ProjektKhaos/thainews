@@ -1,0 +1,11 @@
+/vendor/
+/node_modules/
+/.env
+/.env.*
+/.phpunit.result.cache
+/app/config.php
+/test-results/
+/playwright-report/
+/storage/
+/docs/
+/assets/js/vendor/sortable.min.js

@@ -1,0 +1,11 @@
+<?php
+// Senast uppdaterad: 2026-09-20 18:22
+return [
+'nav.home'=>'Hem','nav.settings'=>'Inställningar','nav.language'=>'Språk',
+'meta.title'=>'Thai News — Nyheter från Thailand','meta.description'=>'De senaste nyheterna från Thailand, grupperade efter källa och uppdaterade automatiskt.','meta.image_alt'=>'Thai News — Nyheter från Thailand',
+'home.eyebrow'=>'Thailands nyhetsnav','home.latest'=>'Senaste nytt','home.updated'=>'Uppdateras automatiskt','home.read_original'=>'Läs originalet','home.read_more'=>'Läs mer >','home.original_title'=>'Originalrubrik','home.no_news'=>'Inga nyheter har hämtats ännu. Försök igen senare.','home.source_site'=>'Besök källan',
+'settings.title'=>'Inställningar','settings.intro'=>'Välj språk, vilka källor som ska synas och i vilken ordning de visas.','settings.theme'=>'Ljust / mörkt tema','settings.language'=>'Gränssnittsspråk','settings.sources'=>'Nyhetskällor','settings.drag'=>'Dra källorna för att ändra ordning.','settings.visible'=>'Visa','settings.move_up'=>'Flytta upp','settings.move_down'=>'Flytta ned','settings.save'=>'Spara inställningar','settings.saved'=>'Inställningarna är sparade.',
+'subscribe.title'=>'Nyheter via e-post','subscribe.text'=>'Få en snygg nyhetssammanfattning fyra gånger per dag.','subscribe.unavailable'=>'E-postprenumeration är tillfälligt otillgänglig.','subscribe.email'=>'E-postadress','subscribe.button'=>'Prenumerera','subscribe.neutral'=>'Om adressen kan ta emot en bekräftelse skickas ett e-postmeddelande inom kort.','subscribe.confirm_title'=>'Bekräfta prenumeration','subscribe.confirm_text'=>'Bekräfta att du vill få Thai News via e-post.','subscribe.confirm_button'=>'Bekräfta prenumeration','subscribe.confirmed'=>'Din prenumeration är bekräftad.','subscribe.invalid'=>'Begäran kunde inte genomföras.',
+'unsubscribe.title'=>'Avsluta prenumeration','unsubscribe.text'=>'Bekräfta att du vill sluta få Thai News via e-post.','unsubscribe.button'=>'Avsluta prenumeration','unsubscribe.done'=>'Din prenumeration har avslutats.','unsubscribe.invalid'=>'Länken är ogiltig eller har löpt ut.',
+'error.title'=>'Något gick fel','error.message'=>'Thai News kunde inte slutföra begäran. Försök igen senare.','time.just_now'=>'nyss'
+];

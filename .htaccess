@@ -1,0 +1,6 @@
+Options -Indexes
+DirectoryIndex index.php
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^(?:app|includes|cron|sql|storage|tests|vendor|node_modules|docs)(?:/|$) - [F,L,NC]
+</IfModule>
