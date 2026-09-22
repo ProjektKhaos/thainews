@@ -70,9 +70,9 @@ final class ApplicationIntegrationTest extends TestCase
         $repo->save($visitor,'sv',[
             ['slug'=>'fixture-source','position'=>1,'visible'=>true],
             ['slug'=>'bangkok-post','position'=>2,'visible'=>false],
-        ]);
+        ],'serif','large');
         $saved=$repo->get($visitor,'en');
-        self::assertSame('sv',$saved['language']);self::assertSame('fixture-source',$saved['sources'][0]['slug']);self::assertFalse((bool)$saved['sources'][1]['visible']);
+        self::assertSame('sv',$saved['language']);self::assertSame('serif',$saved['font_family']);self::assertSame('large',$saved['font_size']);self::assertSame('fixture-source',$saved['sources'][0]['slug']);self::assertFalse((bool)$saved['sources'][1]['visible']);
     }
 
     public function testTranslationsAreCachedAndInvalidatedBySourceTitle(): void

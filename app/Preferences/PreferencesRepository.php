@@ -8,32 +8,50 @@ use PDO;
 
 final class PreferencesRepository
 {
+    public const FONT_FAMILIES=['inter','system','serif','mono'];
+    public const FONT_SIZES=['small','medium','large','xlarge'];
+
     public function __construct(private PDO $pdo) {}
 
-    /** @return array{language:string,sources:list<array<string,mixed>>} */
+    public static function normalizeFontFamily(mixed $value): string
+    {
+        return is_string($value)&&in_array($value,self::FONT_FAMILIES,true)?$value:'inter';
+    }
+
+    public static function normalizeFontSize(mixed $value): string
+    {
+        return is_string($value)&&in_array($value,self::FONT_SIZES,true)?$value:'medium';
+    }
+
+    /** @return array{language:string,font_family:string,font_size:string,sources:list<array<string,mixed>>} */
     public function get(string $visitorHash, string $defaultLanguage='en'): array
     {
-        $stmt=$this->pdo->prepare('SELECT language FROM user_preferences WHERE visitor_hash=?'); $stmt->execute([$visitorHash]);
-        $language=(string)($stmt->fetchColumn() ?: $defaultLanguage);
+        $stmt=$this->pdo->prepare('SELECT language,font_family,font_size FROM user_preferences WHERE visitor_hash=?'); $stmt->execute([$visitorHash]);
+        $preference=$stmt->fetch() ?: [];
+        $language=(string)($preference['language']??$defaultLanguage);
+        $fontFamily=self::normalizeFontFamily($preference['font_family']??null);
+        $fontSize=self::normalizeFontSize($preference['font_size']??null);
         $sql="SELECT s.id,s.slug,s.name,s.website_url,s.default_order,
                     COALESCE(p.position,s.default_order) AS position,
                     COALESCE(p.visible,1) AS visible
              FROM news_sources s LEFT JOIN user_source_preferences p ON p.source_id=s.id AND p.visitor_hash=?
              WHERE s.enabled=1 ORDER BY position,s.default_order,s.id";
         $stmt=$this->pdo->prepare($sql); $stmt->execute([$visitorHash]);
-        return ['language'=>$language,'sources'=>$stmt->fetchAll()];
+        return ['language'=>$language,'font_family'=>$fontFamily,'font_size'=>$fontSize,'sources'=>$stmt->fetchAll()];
     }
 
     /** @param list<array{slug:string,position:int,visible:bool}> $sources */
-    public function save(string $visitorHash, string $language, array $sources): void
+    public function save(string $visitorHash, string $language, array $sources, string $fontFamily='inter', string $fontSize='medium'): void
     {
+        $fontFamily=self::normalizeFontFamily($fontFamily);
+        $fontSize=self::normalizeFontSize($fontSize);
         $ownsTransaction=!$this->pdo->inTransaction();
         if($ownsTransaction)$this->pdo->beginTransaction();
         try {
-            $stmt=$this->pdo->prepare("INSERT INTO user_preferences(visitor_hash,language,created_at,updated_at,last_seen_at)
-                                       VALUES(?,?,UTC_TIMESTAMP(),UTC_TIMESTAMP(),UTC_TIMESTAMP())
-                                       ON DUPLICATE KEY UPDATE language=VALUES(language),updated_at=UTC_TIMESTAMP(),last_seen_at=UTC_TIMESTAMP()");
-            $stmt->execute([$visitorHash,$language]);
+            $stmt=$this->pdo->prepare("INSERT INTO user_preferences(visitor_hash,language,font_family,font_size,created_at,updated_at,last_seen_at)
+                                       VALUES(?,?,?,?,UTC_TIMESTAMP(),UTC_TIMESTAMP(),UTC_TIMESTAMP())
+                                       ON DUPLICATE KEY UPDATE language=VALUES(language),font_family=VALUES(font_family),font_size=VALUES(font_size),updated_at=UTC_TIMESTAMP(),last_seen_at=UTC_TIMESTAMP()");
+            $stmt->execute([$visitorHash,$language,$fontFamily,$fontSize]);
             $lookup=$this->pdo->prepare('SELECT id FROM news_sources WHERE enabled=1 AND slug=?');
             $up=$this->pdo->prepare("INSERT INTO user_source_preferences(visitor_hash,source_id,position,visible,created_at,updated_at)
                                      VALUES(?,?,?,?,UTC_TIMESTAMP(),UTC_TIMESTAMP())

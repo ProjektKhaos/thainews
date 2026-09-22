@@ -109,6 +109,8 @@ CREATE TABLE IF NOT EXISTS source_fetch_runs (
 CREATE TABLE IF NOT EXISTS user_preferences (
   visitor_hash CHAR(64) PRIMARY KEY,
   language VARCHAR(10) NOT NULL DEFAULT 'en',
+  font_family VARCHAR(20) NOT NULL DEFAULT 'inter',
+  font_size VARCHAR(20) NOT NULL DEFAULT 'medium',
   created_at DATETIME NOT NULL,
   updated_at DATETIME NOT NULL,
   last_seen_at DATETIME NOT NULL,
@@ -141,3 +143,4 @@ CREATE TABLE IF NOT EXISTS api_rate_limits (
 INSERT IGNORE INTO schema_migrations(version) VALUES('001-initial');
 INSERT IGNORE INTO schema_migrations(version) VALUES('002-article-translations');
 INSERT IGNORE INTO schema_migrations(version) VALUES('003-translation-memory');
+INSERT IGNORE INTO schema_migrations(version) VALUES('004-user-typography');

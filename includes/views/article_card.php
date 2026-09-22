@@ -14,6 +14,6 @@ $visibleExcerpt = $excerptIsTruncated
 <article class="news-item">
     <h3><a href="<?= e((string)$article['canonical_url']) ?>" target="_blank" rel="noopener noreferrer external" title="<?= e($fullTitle) ?>" aria-label="<?= e($fullTitle) ?>"><?= e($visibleTitle) ?></a></h3>
     <?php if ($fullExcerpt !== ''): ?>
-        <p><span class="excerpt-text"><?= e($visibleExcerpt) ?></span><?php if ($excerptIsTruncated): ?> <a class="read-more" href="<?= e((string)$article['canonical_url']) ?>" target="_blank" rel="noopener noreferrer external"><?= e(t('home.read_more')) ?></a><?php endif; ?></p>
+        <p><span class="excerpt-text"><?= e($visibleExcerpt) ?></span></p>
     <?php endif; ?>
 </article>

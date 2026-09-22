@@ -31,6 +31,7 @@ try {
         $GLOBALS['tn_visitor_hash']=$visitorHash;
         $prefsRepo=new PreferencesRepository($dbObj->pdo()); $GLOBALS['tn_prefs_repo']=$prefsRepo;
         $prefs=$prefsRepo->get($visitorHash,(string)$config->get('default_language','en'));
+        $GLOBALS['tn_preferences']=$prefs;
         $requested=$_GET['lang']??null; $supported=$config->get('supported_languages',['en','th','sv']);
         $language=is_string($requested)&&in_array($requested,$supported,true)?$requested:(string)$prefs['language'];
         if(!in_array($language,$supported,true))$language='en';

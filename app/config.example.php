@@ -10,7 +10,7 @@ return [
     'timezone' => 'Asia/Bangkok',
     'default_language' => 'en',
     'supported_languages' => ['en', 'th', 'sv'],
-    'asset_version' => '1.0.17',
+    'asset_version' => '1.0.26',
     'app_secret' => 'CHANGE_TO_AT_LEAST_32_RANDOM_BYTES',
     'rate_limit_secret' => 'CHANGE_TO_A_DIFFERENT_32_BYTE_SECRET',
     'db' => [

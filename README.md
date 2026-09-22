@@ -1,6 +1,6 @@
 # Thai News
 
-Thai News is a lightweight, server-rendered news aggregator for English-language reporting about Thailand. It collects RSS and Atom feeds from 11 publishers, groups the latest stories by source, and lets each visitor choose language, source visibility, ordering, and light or dark appearance.
+Thai News is a lightweight, server-rendered news aggregator for English-language reporting about Thailand. It collects RSS and Atom feeds from 11 publishers, groups the latest stories by source, and lets each visitor choose language, typography, source visibility, ordering, and light or dark appearance.
 
 Live site: [thainews.aberg.online](https://thainews.aberg.online/)
 
@@ -11,7 +11,10 @@ Live site: [thainews.aberg.online](https://thainews.aberg.online/)
 - English, Thai, and Swedish interface languages.
 - Per-visitor source ordering and visibility, with a no-JavaScript settings fallback.
 - Light and dark themes.
-- Text-focused article cards with compact headlines, excerpts, and localized read-more links.
+- Per-visitor typeface and text-size controls, with locally hosted Inter and Noto Sans Thai fonts.
+- Installable PWA with Android installation prompts, iOS home-screen guidance, app icons, and an offline fallback.
+- First-visit guides for the news page and settings, with translated step-by-step overlays and a restart option.
+- Text-focused article cards with compact linked headlines and excerpts.
 - Optional cached headline translation through Google Cloud Translation.
 - Idempotent database schema and source seed scripts.
 - PHPUnit, Playwright, and axe accessibility tests.
