@@ -1,0 +1,2 @@
+# Ingen direkt webbåtkomst till app-konfiguration eller PHP-includes.
+Require all denied

@@ -1,0 +1,7 @@
+# Säkerhet och kvarstående risker
+
+Previewspärren och admininloggningen är separata. Previewordet har kvar ett äldre fallbackvärde för kompatibilitet; sätt `COSMOS_PREVIEW_PASSWORD_HASH` till ett starkt hashat ord inför bredare testning. Båda inloggningar har CSRF och begränsning av upprepade försök; ny admin använder `password_hash`, kontoaktivering, tidsbegränsad låsning och sessionregenerering. Alla adminmutationer kräver session och CSRF. När ny DB saknas finns en begränsad läsvy bakom det äldre `COSMOS_ADMIN_PASSWORD`; den får inte användas som permanent adminautentisering.
+
+SQLite-databas, backup, SMTP-hemligheter och eventuell äldre JSON-fil ska ligga utanför projekt/DocumentRoot. `Booking::connect()` vägrar fil i offentlig katalog. Publika API-fel visar inte stack traces eller SQL. Tillgänglighets-API lämnar endast datum, ingen PII. Guest-input skrivs med prepared statements och escapad HTML; mejl är text/plain. Admininmatning behöver ytterligare penetrationstest innan publik drift.
+
+Kända begränsningar: bild/CSS/JS-filer kan nås utan previewsession på nuvarande server. Preview-login har sessionsbaserad rate limit; en distribuerad angripare kan byta session. SMTP kan i ett sällsynt kraschtillstånd skicka samma mejl mer än en gång efter retry. Administrationsvyn saknar avancerade roller, sökning och separat audit för varje regelrad. En produktionsgranskning av filåtkomst, sessionkonfiguration, HTTPS och backupbehörighet återstår. Ingen aktiv säkerhetsskanning mot live gjordes.

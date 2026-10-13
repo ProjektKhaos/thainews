@@ -1,0 +1,6 @@
+# Marknadsjournal - Apache
+DirectoryIndex index.php
+Options -Indexes
+<FilesMatch "^(?:README\.md|CHANGELOG\.md|\.env|\.gitignore)$">
+  Require all denied
+</FilesMatch>

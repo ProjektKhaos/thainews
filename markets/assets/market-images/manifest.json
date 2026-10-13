@@ -1,0 +1,308 @@
+{
+  "warorot": {
+    "file": "assets/market-images/warorot.webp",
+    "exact": true,
+    "title": "Warorot Market 01.jpg",
+    "artist": "Department of Tourism Thailand: LannaPhoto",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Warorot_Market_01.jpg"
+  },
+  "mueang-mai": {
+    "file": "assets/market-images/mueang-mai.webp",
+    "exact": false,
+    "title": "Thai market vegetables 01.jpg",
+    "artist": "Takeaway",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Thai_market_vegetables_01.jpg"
+  },
+  "ton-lam-yai": {
+    "file": "assets/market-images/ton-lam-yai.webp",
+    "exact": false,
+    "title": "Man Weaving Flowers - Talat Warorot Market - Chiang Mai - Thailand (34304663173).jpg",
+    "artist": "Adam Jones from Kelowna, BC, Canada",
+    "license": "CC BY-SA 2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Man_Weaving_Flowers_-_Talat_Warorot_Market_-_Chiang_Mai_-_Thailand_(34304663173).jpg"
+  },
+  "thanin": {
+    "file": "assets/market-images/thanin.webp",
+    "exact": true,
+    "title": "2017 0419 Thanin market meats.jpg",
+    "artist": "Takeaway",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:2017_0419_Thanin_market_meats.jpg"
+  },
+  "chiang-mai-gate": {
+    "file": "assets/market-images/chiang-mai-gate.webp",
+    "exact": true,
+    "title": "Pratoo Chiang Mai market - panoramio - gary4now.jpg",
+    "artist": "gary4now",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Pratoo_Chiang_Mai_market_-_panoramio_-_gary4now.jpg"
+  },
+  "nong-hoi-fresh": {
+    "file": "assets/market-images/nong-hoi-fresh.webp",
+    "exact": false,
+    "title": "CHIANG MAI MARKET THAILLAND FEB 2012 (6918106834).jpg",
+    "artist": "calflier001",
+    "license": "CC BY-SA 2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:CHIANG_MAI_MARKET_THAILLAND_FEB_2012_(6918106834).jpg"
+  },
+  "kham-thiang": {
+    "file": "assets/market-images/kham-thiang.webp",
+    "exact": false,
+    "title": "Thanin market banana flowers and leaves.jpg",
+    "artist": "Takeaway",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Thanin_market_banana_flowers_and_leaves.jpg"
+  },
+  "hmong-market": {
+    "file": "assets/market-images/hmong-market.webp",
+    "exact": false,
+    "title": "Chiang Mai Night Bazaar - panoramio.jpg",
+    "artist": "gary4now",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Chiang_Mai_Night_Bazaar_-_panoramio.jpg"
+  },
+  "night-bazaar": {
+    "file": "assets/market-images/night-bazaar.webp",
+    "exact": true,
+    "title": "Chiang Mai Night Bazaar in 2018.jpg",
+    "artist": "Christophe95",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Chiang_Mai_Night_Bazaar_in_2018.jpg"
+  },
+  "kalare": {
+    "file": "assets/market-images/kalare.webp",
+    "exact": false,
+    "title": "Chiang Mai P1110867.JPG",
+    "artist": "Deror Avi",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Chiang_Mai_P1110867.JPG"
+  },
+  "anusarn": {
+    "file": "assets/market-images/anusarn.webp",
+    "exact": true,
+    "title": "AnusarnMarketChiangMai.jpg",
+    "artist": "User: (WT-shared) Shoestring at wts wikivoyage",
+    "license": "Public domain",
+    "license_url": "",
+    "source_url": "https://commons.wikimedia.org/wiki/File:AnusarnMarketChiangMai.jpg"
+  },
+  "chang-phueak-night": {
+    "file": "assets/market-images/chang-phueak-night.webp",
+    "exact": false,
+    "title": "Thai market food 01.jpg",
+    "artist": "Takeaway",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Thai_market_food_01.jpg"
+  },
+  "cmu-night": {
+    "file": "assets/market-images/cmu-night.webp",
+    "exact": false,
+    "title": "Thailand 2016 (162 of 422) (31522917024).jpg",
+    "artist": "Weldon Kennedy from London, UK",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Thailand_2016_(162_of_422)_(31522917024).jpg"
+  },
+  "malin-plaza": {
+    "file": "assets/market-images/malin-plaza.webp",
+    "exact": false,
+    "title": "Chiangmai Nightbazaar-1.JPG",
+    "artist": "Rinto Jiang",
+    "license": "Public domain",
+    "license_url": "",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Chiangmai_Nightbazaar-1.JPG"
+  },
+  "kad-manee": {
+    "file": "assets/market-images/kad-manee.webp",
+    "exact": false,
+    "title": "NYE, Chiang Mai markets (11900177053).jpg",
+    "artist": "Andrea Schaffer from Sydney, Australia",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:NYE,_Chiang_Mai_markets_(11900177053).jpg"
+  },
+  "suthep-after-dark": {
+    "file": "assets/market-images/suthep-after-dark.webp",
+    "exact": false,
+    "title": "Su Thep, Mueang Chiang Mai District, Chiang Mai, Thailand - panoramio (41).jpg",
+    "artist": "mohigan",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Su_Thep,_Mueang_Chiang_Mai_District,_Chiang_Mai,_Thailand_-_panoramio_(41).jpg"
+  },
+  "meechok": {
+    "file": "assets/market-images/meechok.webp",
+    "exact": false,
+    "title": "Thailand 2016 (163 of 422) (31522910194).jpg",
+    "artist": "Weldon Kennedy from London, UK",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Thailand_2016_(163_of_422)_(31522910194).jpg"
+  },
+  "wua-lai": {
+    "file": "assets/market-images/wua-lai.webp",
+    "exact": true,
+    "title": "Saturday Evening Market Chiang Mai 2016-04-02.jpg",
+    "artist": "Albert Labermeier",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Saturday_Evening_Market_Chiang_Mai_2016-04-02.jpg"
+  },
+  "sunday-walking": {
+    "file": "assets/market-images/sunday-walking.webp",
+    "exact": true,
+    "title": "Chiang Mai sunday evening walking street.jpg",
+    "artist": "Takeaway",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Chiang_Mai_sunday_evening_walking_street.jpg"
+  },
+  "jing-jai": {
+    "file": "assets/market-images/jing-jai.webp",
+    "exact": false,
+    "title": "Market inChiang Mai.jpg",
+    "artist": "eGuide Travel",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Market_inChiang_Mai.jpg"
+  },
+  "coconut-market": {
+    "file": "assets/market-images/coconut-market.webp",
+    "exact": false,
+    "title": "Banana rotee stall (11900303024).jpg",
+    "artist": "Andrea Schaffer from Sydney, Australia",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Banana_rotee_stall_(11900303024).jpg"
+  },
+  "white-market": {
+    "file": "assets/market-images/white-market.webp",
+    "exact": false,
+    "title": "DGJ 3864 - Buy, Buy, Buy...... (3708439994).jpg",
+    "artist": "Dennis G. Jarvis",
+    "license": "CC BY-SA 2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:DGJ_3864_-_Buy,_Buy,_Buy......_(3708439994).jpg"
+  },
+  "baan-kang-wat": {
+    "file": "assets/market-images/baan-kang-wat.webp",
+    "exact": false,
+    "title": "ThaPaeWalkingStreet2.jpg",
+    "artist": "LannaPhoto",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:ThaPaeWalkingStreet2.jpg"
+  },
+  "nong-ho-flea": {
+    "file": "assets/market-images/nong-ho-flea.webp",
+    "exact": false,
+    "title": "Kamthieng amulet market, Chiang Mai, 2026-09-24 - Buyers crowd the amulet tables.jpg",
+    "artist": "NaN · Mot Dang",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Kamthieng_amulet_market,_Chiang_Mai,_2026-09-24_-_Buyers_crowd_the_amulet_tables.jpg"
+  },
+  "baan-haw": {
+    "file": "assets/market-images/baan-haw.webp",
+    "exact": false,
+    "title": "CHIANG MAI MARKET THAILAND FEB 2012 (7064180451).jpg",
+    "artist": "calflier001",
+    "license": "CC BY-SA 2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:CHIANG_MAI_MARKET_THAILAND_FEB_2012_(7064180451).jpg"
+  },
+  "somphet": {
+    "file": "assets/market-images/somphet.webp",
+    "exact": false,
+    "title": "Market - Chiang Mai.jpg",
+    "artist": "Papa November",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Market_-_Chiang_Mai.jpg"
+  },
+  "ming-muang": {
+    "file": "assets/market-images/ming-muang.webp",
+    "exact": false,
+    "title": "Si Phum, Mueang Chiang Mai District, Chiang Mai, Thailand - panoramio (99).jpg",
+    "artist": "mohigan",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Si_Phum,_Mueang_Chiang_Mai_District,_Chiang_Mai,_Thailand_-_panoramio_(99).jpg"
+  },
+  "sanpakhoi": {
+    "file": "assets/market-images/sanpakhoi.webp",
+    "exact": false,
+    "title": "Chiangmai-market.jpg",
+    "artist": "Steve Evans from Bangalore, India",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Chiangmai-market.jpg"
+  },
+  "mae-hia": {
+    "file": "assets/market-images/mae-hia.webp",
+    "exact": false,
+    "title": "2017 0419 Thanin market bamboo shoots.jpg",
+    "artist": "Takeaway",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:2017_0419_Thanin_market_bamboo_shoots.jpg"
+  },
+  "mae-kha": {
+    "file": "assets/market-images/mae-kha.webp",
+    "exact": false,
+    "title": "Chang Moi, Mueang Chiang Mai District, Chiang Mai, Thailand - panoramio (84).jpg",
+    "artist": "mohigan",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Chang_Moi,_Mueang_Chiang_Mai_District,_Chiang_Mai,_Thailand_-_panoramio_(84).jpg"
+  },
+  "think-park": {
+    "file": "assets/market-images/think-park.webp",
+    "exact": false,
+    "title": "DGJ 3870 (3708034006).jpg",
+    "artist": "Dennis G. Jarvis",
+    "license": "CC BY-SA 2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:DGJ_3870_(3708034006).jpg"
+  },
+  "ngfm": {
+    "file": "assets/market-images/ngfm.webp",
+    "exact": false,
+    "title": "Thailand (24935641).jpg",
+    "artist": "Steve Evans from Citizen of the World",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Thailand_(24935641).jpg"
+  },
+  "keha-nong-hoi": {
+    "file": "assets/market-images/keha-nong-hoi.webp",
+    "exact": false,
+    "title": "DGJ 3871 (3708037424).jpg",
+    "artist": "Dennis G. Jarvis",
+    "license": "CC BY-SA 2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:DGJ_3871_(3708037424).jpg"
+  },
+  "san-pa-khoi-street": {
+    "file": "assets/market-images/san-pa-khoi-street.webp",
+    "exact": false,
+    "title": "Marché à Chiang Mai.jpg",
+    "artist": "Bienvenue en Thaïlande",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:March%C3%A9_%C3%A0_Chiang_Mai.jpg"
+  }
+}

@@ -149,7 +149,7 @@ test('language and source visibility persist', async ({ page }) => {
 test('metadata and branding use approved assets', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://thainews.aberg.online/');
-  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://thainews.aberg.online/img/thainews_fb_og.png');
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://thainews.aberg.online/img/fb_og.png');
   await expect(page.locator('.brand img')).toHaveAttribute('src', /img\/logo_trans\.png/);
 });
 test('PWA manifest, service worker and install prompt are available', async ({ page }) => {

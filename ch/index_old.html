@@ -1,0 +1,91 @@
+<!doctype html>
+<!-- Senast uppdaterad 2026-10-12 18:00 (Asia/Bangkok) -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5f0">
+  <meta name="description" content="Cosmos House in Chiang Mai. Our new website is coming soon.">
+  <title>Cosmos House · Chiang Mai</title>
+  <style>
+    :root{color-scheme:light;--cream:#f7f5f0;--paper:#fffefa;--ink:#252e2c;--olive:#34453a;--soft:#6f7863;--line:#d9ddd4;--peach:#e4bd9c}
+    *{box-sizing:border-box}
+    html{min-height:100%}
+    body{margin:0;min-height:100vh;background:var(--cream);color:var(--ink);font-family:Arial,"Noto Sans Thai",sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit}
+    button{font:inherit}
+    .skip{position:absolute;left:1rem;top:-4rem;padding:.7rem 1rem;background:var(--paper);z-index:5}
+    .skip:focus{top:1rem}
+    .shell{min-height:100vh;display:flex;flex-direction:column}
+    header,footer{width:min(1440px,100%);margin-inline:auto;padding-inline:clamp(1.25rem,5vw,5.5rem)}
+    header{min-height:92px;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;border-bottom:1px solid var(--line)}
+    .brand{display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;font-weight:700;letter-spacing:.18em;font-size:.87rem;white-space:nowrap}
+    .brand span:last-child{font-weight:400}
+    .brand-star{font-size:1.75rem;line-height:1;color:var(--soft);font-weight:400;letter-spacing:0}
+    .languages{display:flex;gap:.25rem;align-items:center}
+    .languages button{border:0;background:transparent;color:#5f665e;padding:.65rem .7rem;cursor:pointer;min-width:44px;min-height:44px;border-radius:4px;font-size:.76rem;letter-spacing:.08em}
+    .languages button[aria-pressed="true"]{background:#e8ebe3;color:var(--ink);font-weight:700}
+    .languages button:focus-visible,.preview:focus-visible{outline:2px solid var(--olive);outline-offset:3px}
+    main{width:min(1440px,100%);margin:auto;padding:clamp(2rem,5vw,5rem) clamp(1.25rem,5vw,5.5rem);display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);align-items:center;gap:clamp(2rem,6vw,7rem);flex:1}
+    .copy{max-width:690px;padding-block:1rem}
+    .eyebrow{display:flex;align-items:center;gap:.9rem;text-transform:uppercase;letter-spacing:.24em;font-size:.68rem;font-weight:700;color:var(--soft);margin:0 0 2rem}
+    .eyebrow:before{content:"";width:31px;height:1px;background:currentColor}
+    h1{font-family:Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:-.055em;font-size:clamp(4.4rem,8vw,8.6rem);line-height:.98;margin:0 0 2rem}
+    h1 em{font-weight:400;color:var(--soft)}
+    .lead{font-size:clamp(1.08rem,1.65vw,1.35rem);line-height:1.6;max-width:36rem;margin:0 0 1.65rem}
+    .status{display:flex;align-items:flex-start;gap:.8rem;padding-top:1.4rem;border-top:1px solid var(--line);color:#586258;font-size:.92rem;line-height:1.55;max-width:36rem}
+    .status:before{content:"";flex:none;width:7px;height:7px;margin-top:.47rem;background:var(--soft);border-radius:50%}
+    .art{min-height:min(68vh,690px);position:relative;overflow:hidden;background:linear-gradient(145deg,#536655 0%,#34453a 48%,#263a31 100%);isolation:isolate}
+    .art:before{content:"";position:absolute;width:90%;aspect-ratio:1;border:1px solid rgba(255,255,255,.25);border-radius:50%;top:-37%;left:30%}
+    .art:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(155deg,transparent 0 94px,rgba(255,255,255,.045) 95px 96px);pointer-events:none}
+    .arch{position:absolute;left:16%;right:16%;bottom:-18%;height:105%;border-radius:50% 50% 0 0;background:linear-gradient(145deg,#dbd5bb,#e9e4cf 64%,#c7c6ae);box-shadow:-24px -10px 50px rgba(9,27,17,.18)}
+    .arch:after{content:"";position:absolute;left:13%;right:13%;top:15%;bottom:0;border-radius:50% 50% 0 0;background:linear-gradient(135deg,#93a08b 0%,#6d806e 45%,#415c4b 100%)}
+    .orb{position:absolute;z-index:1;width:31%;aspect-ratio:1;left:35%;top:29%;border-radius:50%;background:radial-gradient(circle at 34% 32%,#fff8d9 0%,#f2d7a9 42%,#dbac83 76%,#ae8069 100%);box-shadow:0 0 70px rgba(244,218,166,.22)}
+    .art-mark{position:absolute;z-index:2;bottom:1.6rem;left:1.7rem;color:#f8f4e7;text-transform:uppercase;letter-spacing:.27em;font-size:.64rem}
+    footer{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:80px;border-top:1px solid var(--line);color:#6f766f;font-size:.76rem;letter-spacing:.02em}
+    .preview{text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:.2rem}
+    [data-copy]{display:none}
+    [data-copy].active{display:contents}
+    @media(max-width:850px){main{grid-template-columns:1fr;gap:2rem}.copy{padding-top:1rem}.art{min-height:420px;max-height:540px}h1{font-size:clamp(4rem,11vw,6.5rem)}}
+    @media(max-width:520px){header{min-height:73px}.brand{font-size:.7rem;letter-spacing:.12em}.brand-star{font-size:1.4rem}.languages button{padding:.5rem .38rem;font-size:.7rem}main{padding-top:2.6rem;padding-bottom:2.8rem}.eyebrow{margin-bottom:1.5rem}h1{font-size:clamp(3.8rem,15vw,5rem)}.art{min-height:350px}footer{padding-block:1.4rem;align-items:flex-start;flex-direction:column}}
+    @media(prefers-reduced-motion:no-preference){.orb{animation:breathe 9s ease-in-out infinite alternate}@keyframes breathe{to{transform:translateY(-12px);box-shadow:0 0 95px rgba(244,218,166,.3)}}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="shell">
+    <header>
+      <div class="brand" aria-label="Cosmos House"><span class="brand-star" aria-hidden="true">✳</span>COSMOS <span>HOUSE</span></div>
+      <nav class="languages" aria-label="Language">
+        <button type="button" data-language="en" aria-pressed="true">EN</button>
+        <button type="button" data-language="sv" aria-pressed="false">SV</button>
+        <button type="button" data-language="th" aria-pressed="false">TH</button>
+      </nav>
+    </header>
+    <main id="main">
+      <div class="copy">
+        <p class="eyebrow">Chiang Mai · Thailand</p>
+        <div data-copy="en" class="active"><h1>A new<br><em>beginning.</em></h1><p class="lead">Cosmos House is preparing its new home online. We look forward to sharing more soon.</p><p class="status">Booking enquiries are not open yet. Please check back for updates.</p></div>
+        <div data-copy="sv"><h1>En ny<br><em>början.</em></h1><p class="lead">Cosmos House förbereder sin nya webbplats. Vi ser fram emot att berätta mer snart.</p><p class="status">Bokningsförfrågningar är inte öppna ännu. Välkommen tillbaka för uppdateringar.</p></div>
+        <div data-copy="th"><h1>การเริ่มต้น<br><em>ครั้งใหม่</em></h1><p class="lead">Cosmos House กำลังเตรียมเว็บไซต์ใหม่ แล้วพบกันเร็ว ๆ นี้</p><p class="status">ยังไม่เปิดรับคำขอจอง โปรดกลับมาติดตามความคืบหน้า</p></div>
+      </div>
+      <div class="art" role="img" aria-label="Abstract arch and warm sun in Cosmos House colours"><div class="arch"></div><div class="orb"></div><span class="art-mark">Cosmos House · Chiang Mai</span></div>
+    </main>
+    <footer><span>© Cosmos House · Chiang Mai</span><a class="preview" href="https://thainews.aberg.online/ch/login.php">Private preview ↗</a></footer>
+  </div>
+  <script>
+    const buttons=document.querySelectorAll('[data-language]');
+    const copies=document.querySelectorAll('[data-copy]');
+    const labels={en:{title:'Cosmos House · Chiang Mai',preview:'Private preview ↗',skip:'Skip to content'},sv:{title:'Cosmos House · Chiang Mai',preview:'Privat förhandsvisning ↗',skip:'Hoppa till innehåll'},th:{title:'Cosmos House · เชียงใหม่',preview:'ดูตัวอย่างส่วนตัว ↗',skip:'ข้ามไปยังเนื้อหา'}};
+    buttons.forEach(button=>button.addEventListener('click',()=>{
+      const language=button.dataset.language;
+      document.documentElement.lang=language;
+      document.title=labels[language].title;
+      document.querySelector('.preview').textContent=labels[language].preview;
+      document.querySelector('.skip').textContent=labels[language].skip;
+      buttons.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+      copies.forEach(item=>item.classList.toggle('active',item.dataset.copy===language));
+    }));
+  </script>
+</body>
+</html>

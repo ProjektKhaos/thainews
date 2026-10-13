@@ -1,0 +1,19 @@
+[Unit]
+Description=Cosmos House hold expiry and email queue
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/abergonline/thainews/ch
+ExecStart=/usr/bin/php scripts/expire_holds.php
+ExecStart=/usr/bin/php scripts/mail_worker.php
+UMask=0077
+TimeoutStartSec=10min
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/cosmos-house

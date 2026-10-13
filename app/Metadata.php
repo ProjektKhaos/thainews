@@ -14,11 +14,11 @@ final class Metadata
         $base = trim((string)$config->get('base_url', ''), '/');
         $prefix = $base === '' ? '' : '/' . $base;
         $canonical = $origin . $prefix . '/' . ltrim($path, '/');
-        $imageUrl = $image ?: $origin . $prefix . '/img/thainews_fb_og.png';
+        $imageUrl = $image ?: $origin . $prefix . '/img/fb_og.png';
         return compact('title','description','type','canonical') + [
             'image' => $imageUrl,
-            'image_width' => 1677,
-            'image_height' => 938,
+            'image_width' => 1731,
+            'image_height' => 909,
             'image_alt' => $title,
         ];
     }

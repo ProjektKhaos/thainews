@@ -1,0 +1,2 @@
+<?php if(!isset($manager,$user)){http_response_code(404);exit;} ?>
+<section class="card"><h2>Change your password</h2><p class="help">Your username is <?=ae($user['username'])?>. Changing the password signs out other sessions for this account.</p><?php form_start('password','account');input('current_password','Current password','','password',true,'autocomplete="current-password"');input('new_password','New password (at least 16 characters)','','password',true,'minlength="16" maxlength="200" autocomplete="new-password"');?><button>Change password</button></form></section>

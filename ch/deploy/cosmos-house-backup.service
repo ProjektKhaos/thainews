@@ -1,0 +1,16 @@
+[Unit]
+Description=Verified Cosmos House database and photo backup
+
+[Service]
+Type=oneshot
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/abergonline/thainews/ch
+ExecStart=/usr/bin/php scripts/backup_backend.php
+UMask=0077
+TimeoutStartSec=30min
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/cosmos-house

@@ -1,0 +1,31 @@
+<?php
+// Senast uppdaterad 2026-10-12 10:00 (Asia/Bangkok)
+declare(strict_types=1);
+if (isset($_SERVER['SCRIPT_FILENAME']) && realpath((string)$_SERVER['SCRIPT_FILENAME'])===__FILE__) { http_response_code(404); exit; }
+function cosmos_booking_widget(string $language): void {
+    require_once __DIR__.'/app/Booking.php';
+    $messages = [
+        'sv' => ['closed'=>'Förfrågningar stängda','soon'=>'Vi öppnar bokningen när priser, kapacitet och villkor är fastställda. Under tiden är du välkommen att se dig omkring i huset.','gallery'=>'Se bildgalleriet','heading'=>'Bokningsförfrågan','checkin'=>'Incheckning','checkout'=>'Utcheckning','guests'=>'Gäster','name'=>'Ditt namn','email'=>'E-post','phone'=>'Telefon (valfritt)','message'=>'Meddelande (valfritt)','code'=>'Rabattkod (valfritt)','quote'=>'Hämta pris','send'=>'Skicka förfrågan','noPayment'=>'En förfrågan är ingen bekräftad bokning. Ingen betalning görs här.','choose'=>'Välj datum och gäster för att se pris.','next'=>'Nästa månad','previous'=>'Föregående månad','unavailable'=>'Upptaget','available'=>'Ledigt','privacy'=>'Jag har läst informationen om hur mina uppgifter hanteras.'],
+        'en' => ['closed'=>'Enquiries closed','soon'=>'Bookings will open when rates, capacity and terms are confirmed. You are welcome to explore the house meanwhile.','gallery'=>'View gallery','heading'=>'Booking enquiry','checkin'=>'Check-in','checkout'=>'Check-out','guests'=>'Guests','name'=>'Your name','email'=>'Email','phone'=>'Phone (optional)','message'=>'Message (optional)','code'=>'Discount code (optional)','quote'=>'Get price','send'=>'Send enquiry','noPayment'=>'An enquiry is not a confirmed booking. No payment is taken here.','choose'=>'Select dates and guests to see the price.','next'=>'Next month','previous'=>'Previous month','unavailable'=>'Unavailable','available'=>'Available','privacy'=>'I have read how my information is handled.'],
+        'th' => ['closed'=>'ยังไม่เปิดรับคำขอจอง','soon'=>'การจองจะเปิดเมื่อราคาจำนวนผู้เข้าพักและเงื่อนไขได้รับการยืนยัน ระหว่างนี้เชิญชมบ้านและภาพถ่าย','gallery'=>'ชมแกลเลอรี','heading'=>'ส่งคำขอจอง','checkin'=>'วันเข้าพัก','checkout'=>'วันออก','guests'=>'จำนวนผู้เข้าพัก','name'=>'ชื่อของคุณ','email'=>'อีเมล','phone'=>'โทรศัพท์ (ไม่บังคับ)','message'=>'ข้อความ (ไม่บังคับ)','code'=>'รหัสส่วนลด (ไม่บังคับ)','quote'=>'ดูราคา','send'=>'ส่งคำขอ','noPayment'=>'คำขอยังไม่ใช่การยืนยันการจอง ไม่มีการชำระเงินที่นี่','choose'=>'เลือกวันและจำนวนผู้เข้าพักเพื่อดูราคา','next'=>'เดือนถัดไป','previous'=>'เดือนก่อน','unavailable'=>'ไม่ว่าง','available'=>'ว่าง','privacy'=>'ฉันได้อ่านข้อมูลเกี่ยวกับการใช้ข้อมูลส่วนบุคคลแล้ว'],
+    ];
+    $copy=$messages[$language]??$messages['en'];
+    $h=static fn($v)=>htmlspecialchars((string)$v,ENT_QUOTES,'UTF-8');
+    try { $app=\Cosmos\Booking::connect(); $open=$app->publicOpen(); $config=$app->configuration(); }
+    catch (Throwable $error) { $open=false; $config=[]; }
+    $base=cosmos_project_base(3);
+    if (!$open) {
+        echo '<div class="booking-card-head"><div><strong>'.$h($copy['closed']).'</strong><small>'.$h($copy['soon']).'</small></div></div><p>'.$h($copy['soon']).'</p><a class="btn dark" href="'.$h($base.'/'.$language.'/gallery/').'">'.$h($copy['gallery']).' <span>↗</span></a>';
+        return;
+    }
+    if (empty($_SESSION['cosmos_booking_csrf'])) $_SESSION['cosmos_booking_csrf']=bin2hex(random_bytes(24));
+    $config['api']=$base.'/booking_api.php'; $config['csrf']=$_SESSION['cosmos_booking_csrf']; $config['language']=$language; $config['copy']=$copy;
+    echo '<div class="booking-card-head"><strong>'.$h($copy['heading']).'</strong></div>';
+    echo '<form id="cosmosBookingForm" method="post" action="'.$h($base.'/booking_api.php?action=inquire').'"><noscript><p>'.($language==='sv'?'Aktivera JavaScript för att hämta offert och skicka förfrågan.':($language==='th'?'เปิด JavaScript เพื่อดูราคาและส่งคำขอ':'Enable JavaScript to get a quote and send an enquiry.')).'</p></noscript><div id="cosmosCalendar" class="cosmos-calendar" aria-label="'.$h($copy['heading']).'"><div class="calendar-nav"><button type="button" data-shift="-1" aria-label="'.$h($copy['previous']).'">‹</button><strong id="calendarMonth"></strong><button type="button" data-shift="1" aria-label="'.$h($copy['next']).'">›</button></div><div id="calendarDays" class="calendar-days"></div></div>';
+    echo '<div class="dates"><label>'.$h($copy['checkin']).'<input type="date" id="cosmosCheckin" name="checkIn" required></label><label>'.$h($copy['checkout']).'<input type="date" id="cosmosCheckout" name="checkOut" required></label></div>';
+    echo '<label class="field-label">'.$h($copy['guests']).'<select id="cosmosGuests" name="guests" required>';
+    for($i=1;$i<=$config['maxGuests'];$i++) echo '<option value="'.$i.'">'.$i.'</option>';
+    echo '</select></label><label class="field-label">'.$h($copy['code']).'<input name="code" maxlength="40"></label><button type="button" id="cosmosQuoteButton" class="btn outline">'.$h($copy['quote']).'</button><div id="cosmosPrice" class="price-breakdown" role="status" aria-live="polite">'.$h($copy['choose']).'</div>';
+    echo '<div class="form-divider"></div><label class="field-label">'.$h($copy['name']).'<input name="name" maxlength="120" autocomplete="name" required></label><label class="field-label">'.$h($copy['email']).'<input name="email" type="email" maxlength="254" autocomplete="email" required></label><label class="field-label">'.$h($copy['phone']).'<input name="phone" type="tel" maxlength="40" autocomplete="tel"></label><label class="field-label">'.$h($copy['message']).'<textarea name="message" maxlength="1500" rows="3"></textarea></label><label><input type="checkbox" name="privacy" required> '.$h($copy['privacy']).' <a href="'.$h($base.'/privacy.php?lang='.$language).'">↗</a></label><input type="text" name="website" tabindex="-1" autocomplete="off" class="honeypot"><button type="submit" class="btn dark submit-btn">'.$h($copy['send']).'</button><p id="cosmosBookingFeedback" role="status" aria-live="polite"></p><p class="booking-legal">'.$h($copy['noPayment']).'</p></form>';
+    echo '<script>window.COSMOS_BOOKING='.json_encode($config,JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS|JSON_HEX_QUOT|JSON_UNESCAPED_UNICODE).'</script><script src="'.$h($base.'/assets/booking.js').'" defer></script>';
+}

@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Cosmos House booking maintenance every minute
+
+[Timer]
+OnCalendar=*-*-* *:*:00
+AccuracySec=1s
+Persistent=true
+Unit=cosmos-house-worker.service
+
+[Install]
+WantedBy=timers.target

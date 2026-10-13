@@ -1,0 +1,10 @@
+# Spara aldrig inloggningar, databaser, bilder eller tillfälliga backuper i Git.
+/storage/*
+!/storage/.htaccess
+!/storage/photos/
+!/storage/tmp/
+/storage/photos/*
+!/storage/photos/.htaccess
+/storage/tmp/*
+!/storage/tmp/.htaccess
+/app/config.php

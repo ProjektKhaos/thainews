@@ -1,0 +1,11 @@
+[Unit]
+Description=Nightly Cosmos House backup at 03:15 Bangkok time
+
+[Timer]
+OnCalendar=*-*-* 03:15:00 Asia/Bangkok
+RandomizedDelaySec=60
+Persistent=true
+Unit=cosmos-house-backup.service
+
+[Install]
+WantedBy=timers.target
